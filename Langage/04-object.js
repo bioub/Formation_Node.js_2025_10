@@ -63,10 +63,10 @@ createButton({
 
 // Namespace object (plus vraiment recommandé avec les modules ES6)
 const MyMath = {
-  sum: function (a, b) {
+  sum(a, b) {
     return a + b;
   },
-  square: function (a) {
+  square(a) {
     return a * a;
   }
 };
