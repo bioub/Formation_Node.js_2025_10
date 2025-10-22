@@ -1,9 +1,10 @@
 const readline = require('node:readline');
+const Random = require('./random');
 // En CommonJS importer getRandomInt (ou Random)
 // modifier l'appel si besoin (Random.getRandomInt(min, max))
 // ET exporter Jeu
 
-class Jeu {
+module.exports = class Jeu {
   constructor(options = {}) {
     const min = options.min ?? 0;
     const max = options.max ?? 100;
