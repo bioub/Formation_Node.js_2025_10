@@ -1,5 +1,8 @@
 // La plupart des APIs JavaScript sont définis en utilisant des objets.
 // et parfois sont des variables globales.
+
+const { get } = require("http");
+
 // Exemple
 console.log(Math.PI); // Accès à la propriété PI de l'objet Math
 console.log(Math.sqrt(16)); // Appel de la méthode sqrt de l'objet Math
@@ -78,12 +81,25 @@ console.log(MyMath.square(4));
 const pointA = {
   x: 10,
   y: 20,
+  // getDistance(otherPoint) {
+  //   const dx = otherPoint.x - this.x;
+  //   const dy = otherPoint.y - this.y;
+  //   return Math.sqrt(dx * dx + dy * dy);
+  // }
 };
 
 const pointB = {
   x: 30,
   y: 40,
+  // getDistance(otherPoint) {
+  //   const dx = otherPoint.x - this.x;
+  //   const dy = otherPoint.y - this.y;
+  //   return Math.sqrt(dx * dx + dy * dy);
+  // }
 };
+
+// const pointB = new Point(30, 40);
+
 
 // Constructor / class
 // Cas d'utilisations :
