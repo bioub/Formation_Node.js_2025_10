@@ -1,8 +1,9 @@
-"use strict";
+'use strict';
 
+const { default: chalk } = require('chalk');
 const config = require('./config.json');
-const MyMath = require('./my-maths')
-const hello = require('./hello')
+const MyMath = require('./my-maths');
+const hello = require('./hello');
 
 console.log(MyMath.sum(1, 2)); // 3
 console.log(hello('Romain')); // Hello Romain
@@ -11,4 +12,4 @@ console.log(hello('Romain')); // Hello Romain
 // le fichier courant
 console.log(__dirname); // /Users/romain/Desktop/Formation/Module/demos-commonjs
 
-console.log(config.appName); // MyApp
+console.log(chalk.red(config.appName)); // MyApp

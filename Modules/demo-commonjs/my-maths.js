@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 // Node.js créé automatiquement une fonction
 // pour créer une portée au niveau du fichier
 // donc les variables et fonctions sont locales au fichiers
@@ -9,9 +9,9 @@
 
 exports.sum = function sum(a, b) {
   return a + b;
-}
+};
 
 exports.square = function square(a) {
   return a * a;
-}
+};
 // }

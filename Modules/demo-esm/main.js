@@ -1,6 +1,7 @@
 // Pas besoin du "use strict" en ESM
 // on est déjà en mode strict par défaut
 import process from 'node:process';
+import chalk from 'chalk';
 import { sum } from './my-maths.js';
 import hello from './hello.js';
 import config from './config.json' with { type: 'json' };
@@ -14,4 +15,4 @@ console.log(import.meta.dirname); // /Users/romain/Desktop/Formation/Module/demo
 
 console.log(config.appName); // MyApp
 
-console.log(process.version); // Version de Node
+console.log(chalk.red(process.version)); // Version de Node
