@@ -1,7 +1,19 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import md5 from "md5";
+import {createHash, webcrypto} from "node:crypto";
 import { minify } from "terser";
+
+function md5Hash(content) {
+  return createHash("md5").update(content).digest("hex");
+}
+
+function md5HashWebCrypto(content) {
+  const hashBuffer = webcrypto.subtle.digest("MD5", new TextEncoder().encode(content));
+  return hashBuffer.then((buffer) => {
+    const hashArray = Array.from(new Uint8Array(buffer));
+    return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+  });
+}
 
 const distPath = path.resolve(import.meta.dirname, "dist");
 const srcPath = path.resolve(import.meta.dirname, "src");
