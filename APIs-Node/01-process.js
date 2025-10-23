@@ -27,6 +27,11 @@ process.on('SIGINT', () => {
   process.exit(0); // terminer le processus proprement
 });
 
+process.on('uncaughtException', (err) => {
+  console.error('Exception non capturée :', err);
+  process.exit(1); // terminer le processus avec une erreur
+});
+
 setInterval(() => {
   console.log('Processus en cours...');
 }, 1000);

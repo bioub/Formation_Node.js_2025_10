@@ -11,6 +11,12 @@
 		},
 		{
 			"path": "APIs-Node"
+		},
+		{
+			"path": "Express-Traditionnel"
+		},
+		{
+			"path": "Express-REST"
 		}
 	],
 	"settings": {}
