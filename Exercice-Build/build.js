@@ -11,22 +11,36 @@ const indexHtmlPath = path.resolve(srcPath, "index.html");
 const indexHtmlDistPath = path.resolve(distPath, "index.html");
 const appJsDistPath = path.resolve(distPath, "app.js");
 
-await fs.rm(distPath, { force: true, recursive: true });
-await fs.mkdir(distPath);
+async function emptyDir(dirPath) {
+  await fs.rm(dirPath, { force: true, recursive: true });
+  await fs.mkdir(dirPath);
+}
 
-const horlogeBuffer = await fs.readFile(horlogeJsPath);
-await fs.writeFile(appJsDistPath, horlogeBuffer);
+async function buildJs() {
+  const buffers = await Promise.all([
+    fs.readFile(horlogeJsPath),
+    fs.readFile(indexJsPath),
+  ]);
 
-const indexBuffer = await fs.readFile(indexJsPath);
-await fs.appendFile(appJsDistPath, indexBuffer);
+  const buffer = Buffer.concat(buffers);
+  await fs.writeFile(appJsDistPath, buffer);
+}
 
-let htmlString = await fs.readFile(indexHtmlPath, { encoding: "utf-8" });
-htmlString = htmlString
-  .replace(
-    '<script src="./js/horloge.js"></script>',
-    '<script src="./app.js"></script>'
-  )
-  .replace('<script src="./js/index.js"></script>', "");
+async function buildHtml() {
+  let htmlString = await fs.readFile(indexHtmlPath, { encoding: "utf-8" });
+  htmlString = htmlString
+    .replace(
+      '<script src="./js/horloge.js"></script>',
+      '<script src="./app.js"></script>'
+    )
+    .replace('<script src="./js/index.js"></script>', "");
 
-await fs.writeFile(indexHtmlDistPath, htmlString);
+  await fs.writeFile(indexHtmlDistPath, htmlString);
+}
 
+try {
+  await emptyDir(distPath);
+  await Promise.all([buildJs(), buildHtml()]);
+} catch (err) {
+  console.log(err);
+}
