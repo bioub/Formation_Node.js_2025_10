@@ -11,7 +11,7 @@ export default class Jeu {
     const min = options.min ?? 0;
     const max = options.max ?? 100;
 
-    this.rl = readline.createInterface({
+    this.rl = createInterface({
       input: process.stdin,
       output: process.stdout,
     });

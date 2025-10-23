@@ -1,11 +1,3 @@
-// Node.js créé automatiquement une fonction
-// pour créer une portée au niveau du fichier
-// donc les variables et fonctions sont locales au fichiers
-// -> portée de module
-// function(exports, require, module, __filename, __dirname) {
-// console.log('my-math.js loaded')
-// console.log(arguments);
-
 export function sum(a, b) {
   return a + b;
 }
@@ -13,4 +5,7 @@ export function sum(a, b) {
 export function square(a) {
   return a * a;
 }
-// }
+
+// export class Test {}
+// export const name = '';
+

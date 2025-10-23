@@ -2,7 +2,7 @@
 // on est déjà en mode strict par défaut
 import process from 'node:process';
 import chalk from 'chalk';
-import { sum } from './my-maths.js';
+import { sum, square } from './my-maths.js';
 import hello from './hello.js';
 import config from './config.json' with { type: 'json' };
 
