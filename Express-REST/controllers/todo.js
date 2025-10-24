@@ -1,4 +1,5 @@
-import * as Todo from '../models/todo.js';
+import Todo from '../models/todo.js';
+import { ObjectId } from 'mongodb';
 
 /**
  * @param req {import('express').Request}
@@ -58,7 +59,7 @@ export async function deleteTodo(req, res, next) {
  * @param next {import('express').NextFunction}
  */
 export async function replaceTodo(req, res, next) {
-  const todo = await Todo.findByIdAndReplace(req.params.id, req.body);
+  const todo = await Todo.findOneAndReplace({ _id: ObjectId(req.params.id) }, req.body);
 
   if (!todo) {
     req.notFoundReason = `Todo ${req.params.id} not found`;

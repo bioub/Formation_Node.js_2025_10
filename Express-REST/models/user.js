@@ -13,17 +13,17 @@ const user = {
  * @param {string} credentials.username
  * @param {string} credentials.password
  */
-function login(credentials) {
+async function login(credentials) {
   if (
     credentials.username === user.username &&
     credentials.password === user.password
   ) {
     const token = uuid();
     tokens.push(token);
-    return Promise.resolve(token);
+    return token;
   }
 
-  return Promise.resolve(null);
+  return null;
 }
 
 export { login, tokens };

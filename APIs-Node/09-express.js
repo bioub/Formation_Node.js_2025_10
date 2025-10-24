@@ -20,6 +20,7 @@ app.get('/hello/:name', (req, res) => {
 });
 
 app.get('/search', (req, res) => {
+  // URL example: /search?q=nodejs
   const query = req.query.q;
   res.send(`Search results for: ${query}\n`);
 });
