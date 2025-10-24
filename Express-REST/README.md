@@ -14,7 +14,7 @@ Avec MongoShell ou MongoDB Compass insérer dans la collection users de la base 
 }
 ```
 
-Dans le fichier `models/todo.js` créer un model Mongoose User qui viendra remplacer le user par défaut :
+Dans le fichier `models/user.js` créer un model Mongoose User qui viendra remplacer le user par défaut :
 ```
 const user = {
   username: 'romain',

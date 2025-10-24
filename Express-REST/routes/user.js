@@ -9,4 +9,10 @@ router.post('/login',
   userCtrl.login
 );
 
+// prettier-ignore
+router.post('/register',
+  express.json(),
+  userCtrl.register
+);
+
 export default router;

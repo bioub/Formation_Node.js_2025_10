@@ -1,4 +1,5 @@
-import { tokens } from '../models/user.js';
+import jwt from 'jsonwebtoken';
+import config from '../config/index.js';
 
 /**
  * @param req {import('express').Request}
@@ -6,7 +7,9 @@ import { tokens } from '../models/user.js';
  * @param next {import('express').NextFunction}
  */
 function authenticate(req, res, next) {
-  if (tokens.includes(req.headers.authorization?.slice(7))) {
+  const token = req.headers.authorization?.slice(7); // Remove "Bearer " prefix
+
+  if (token && jwt.verify(token, config.jwtSecret)) {
     return next();
   }
 
